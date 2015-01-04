@@ -1,0 +1,30 @@
+
+<?php $__env->startSection('content'); ?>
+<h1>易书</h1>
+     <p>生如夏花之绚烂，死如秋叶之静美。</p>
+     <div class="subnav">
+        <ul class="nav nav-pills">
+            <li><a href="<?php echo URL::route('book'); ?>">在线阅读</a></li>
+            <li><a href="<?php echo URL::route('categories'); ?>">分类浏览</a></li>
+        </ul>
+    </div>
+    <div class="row-fluid">
+        <div class="span8">
+        <hr/>
+         <?php foreach ($categories as $category): ?>
+         <h4><?php echo $category->name; ?></h4>
+         <?php foreach ($tags as $tag): ?>
+                <a href="<?php echo URL::route('tags', array('id'=>$tag->id,'name'=>$tag->name)); ?>"><?php echo $tag->name; ?></a>
+          <?php endforeach; ?>
+          <?php endforeach; ?>
+        
+       
+        </div>
+        
+        <div class="span4">
+        <?php echo $__env->make('layouts.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+      
+        </div>
+     </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.head', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

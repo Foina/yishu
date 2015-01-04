@@ -1,0 +1,53 @@
+
+<?php $__env->startSection('content'); ?>
+<?php if (!Auth::check()): ?>
+    <?php echo $__env->make('layouts.login', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php else: ?>
+<h1>易书</h1>
+     <p>生如夏花之绚烂，死如秋叶之静美。</p>
+     <hr>
+     <div class="subnav">
+        <ul class="nav nav-pills">
+            <li><a href="<?php echo URL::route('book'); ?>">在线阅读</a></li>
+            <li><a href="<?php echo URL::route('categories'); ?>">分类浏览</a></li>
+        </ul>
+    </div>
+    <div class="row-fluid">
+    <div class="span3 bs-docs-sidebar " >
+         <?php echo $__env->make('layouts.sidebar2', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    </div>
+    <div class="span9">
+    <section>
+    <div class="page-header">
+    <h2>图书管理</h2>
+    </div>
+    <h3>图书列表</h3>
+    </section>
+    <div class="tree">
+    <?php foreach ($books as $book): ?>
+            <ul class="well">
+                <li>
+                	<span><i class="icon-plus-sign"></i><div class="tree-img"><img src="<?php echo asset('/'); ?><?php echo $book->path; ?><?php echo $book->cover; ?>" alt="" height="144" width="102"/></div><div class="tree-text"> <a href="<?php echo URL::route('bookshow', array('id'=>$book->id,'name'=>$book->name)); ?>"><?php echo $book->name; ?></a><div class="operater_edit"><a  href="<?php echo route('edit/Book',$book->id); ?>">
+								<i class="icon-edit icon-white"></i>编辑</a></div><div class="operater_delete"> 
+                                <a  class="deletebook" data-id="<?php echo $book->id; ?>" href="#">
+								<i class="icon-trash icon-white"></i>删除</a></div><p><?php echo $book->info; ?></p></div></span>
+                    <?php foreach(Article::where('book_id','=',$book->id)->get() as $article): ?>
+                    <ul>
+                        <li style="display:none;">
+                        <hr>
+	                        <span><i class="icon-leaf"></i> <?php echo $article->title; ?>。。。。。。。。。。。。<?php echo $article->page_num; ?></span> 
+                        </li>
+                    </ul>
+                    <?php endforeach; ?>
+                </li>
+                
+            </ul>
+            <?php endforeach; ?>
+            
+        </div>
+
+    </div>
+</div>
+<?php endif; ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.head', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

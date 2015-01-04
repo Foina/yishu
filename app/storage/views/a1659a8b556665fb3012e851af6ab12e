@@ -1,0 +1,108 @@
+
+<?php $__env->startSection('content'); ?>
+<script type="text/javascript" src="<?php echo asset('ckeditor/ckeditor.js'); ?>"></script>
+<?php if (!Auth::check()): ?>
+    <?php echo $__env->make('layouts.login', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php else: ?>
+ 
+<h1>易书</h1>
+     <p>生如夏花之绚烂，死如秋叶之静美。</p>
+     <hr>
+     <div class="subnav">
+        <ul class="nav nav-pills">
+            <li><a href="<?php echo URL::route('book'); ?>">在线阅读</a></li>
+            <li><a href="<?php echo URL::route('categories'); ?>">分类浏览</a></li>
+        </ul>
+    </div>
+    <div class="row-fluid">
+    <div class="span3 bs-docs-sidebar " >
+       <?php echo $__env->make('layouts.sidebar2', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    </div>
+    <div class="span9">
+    <section>
+    <div class="page-header">
+    <h2>文章管理</h2>
+    </div>
+    <h3>创建文章</h3>
+    </section>
+    <?php if ($errors->any()): ?>
+        <div class="alert alert-error alert-block">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4>出错了</h4>
+        <?php foreach ($errors->all() as $error): ?>
+            <div><?php echo $error; ?></div>
+        <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+    <?php if ($message = Session::get('success')): ?>
+        <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <h4>操作成功</h4>
+            <?php echo $message; ?>
+        </div>
+    <?php endif; ?>
+    <?php if ($message = Session::get('error')): ?>
+        <div class="alert alert-error alert-block">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <h4>出错了</h4>
+            <?php echo $message; ?>
+        </div>
+    <?php endif; ?>
+
+<?php if ($message = Session::get('warning')): ?>
+<div class="alert alert-warning alert-block">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<h4>警告</h4>
+	<?php echo $message; ?>
+</div>
+<?php endif; ?>
+
+<?php if ($message = Session::get('info')): ?>
+<div class="alert alert-info alert-block">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<h4>操作提示</h4>
+	<?php echo $message; ?>
+</div>
+<?php endif; ?>
+    <div class="well">
+    <form name="article" method="post" class="form-horizontal" id="article_form" >
+    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+    <div class="control-group">
+    <label class="article-label" for="title">标题</label>
+    <div class="article">
+           <input type="text" id="title" name="title" placeholder="title"  class="span12"/>
+           <span class="help-inline"></span>
+    </div> 
+   </div>
+   <div class="control-group">
+        <textarea rows="30" cols="50" name="content">请输入.</textarea>
+    <script type="text/javascript">CKEDITOR.replace('content');</script>
+    </div>
+     <div class="control-group">
+    
+    <div class="article_book  ">
+    所属图书&nbsp
+    <select  id="book" name="book_id" >
+    <option value=""></option>
+        <?php foreach ($books as $book): ?>
+      <option value="<?php echo $book->id; ?>"><?php echo $book->name; ?></option>
+      <?php endforeach; ?>
+      </select> 
+      </div>&nbsp
+      页码&nbsp <input type="text" id="pagenum" name="pagenum" style="width:20px"/>
+      
+      <div class="article_pagenum">
+      <button type="submit" class="btn" id="create_article">创建</button>
+      </div>
+       </div>
+    
+</form>
+        </div>
+
+    </div>
+</div>
+
+<?php endif; ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.head', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

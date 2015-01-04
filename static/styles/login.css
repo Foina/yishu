@@ -1,0 +1,114 @@
+@CHARSET "UTF-8";
+* {
+  margin: 0;
+	padding: 0;
+}
+h4, p{
+  margin: 1em 0;
+}
+img {
+	border: 0;
+}
+#container{
+	
+ margin: 150px auto 0;
+}
+
+.clearfix:after {
+content:".";
+display:block;
+height:0;
+clear:both;
+visibility:hidden;
+}
+.clearfix {display:inline-block;}
+* html .clearfix { height:1%; }
+.clearfix {display:block;}
+fieldset#login {
+background: url(images/login_bg.png) no-repeat top left;
+margin: 0px auto;
+padding: 5px 5px 5px 5px;
+width: 276px;
+height: 179px;
+font-size: 1.4em;
+border: none;
+position: relative;
+left: 15px;
+}
+#login h4 {
+font-size: 18px;
+font-weight: normal;
+font-family: Cambria, Georgia, "Times New Roman", Times, serif;
+width: 246px;
+height: 31px;
+padding: 4px 0px 0px 30px;
+margin: 0px;
+text-align: left;
+}
+#login form {
+height: 95px;
+width: 276px;
+padding: 10px 0px 0px 0px;
+margin: 0px;
+}
+#login p {
+width: 276px;
+margin: 0px;
+padding: 0px;
+font-family: Arial, Helvetica, sans-serif;
+}
+#login form p label {
+text-align: left;
+margin-left: 0.5em;
+float: left;
+font-size: 14px;
+}
+#login form p.check {
+padding-left: 77px;
+width: 199px;
+height: 23px;
+}
+#login #remlabel {
+float: left;
+font-size: 12px;
+position: relative;
+left: -3px;
+}
+#login #remember {
+float: left;
+width: 14px;
+height: 14px;
+margin: 0px;
+padding: 0px;
+position: relative;
+top: 3px;
+}
+#login #submit {
+background: url(images/login.png) no-repeat top left;
+width: 77px;
+height: 27px;
+cursor: pointer;
+border: none;
+float: right;
+}
+#username,  #password {
+background: url(images/input_bg.png) no-repeat top left;
+border: 1px solid #d0d0d0;
+width: 186px;
+height: 21px;
+padding: 2px;
+color: #222222;
+font-size: 14px;
+float: right;
+margin-bottom: 10px;
+margin-right: 8px;
+}
+#login p.member {
+text-align: left;
+width: 270px;
+font-size: 11px;
+font-family: Arial, Helvetica, sans-serif;
+margin: 2px 2px 0px 2px;
+padding: 2px;
+line-height: 18px;
+}

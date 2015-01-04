@@ -1,0 +1,35 @@
+<?php $__env->startSection('content'); ?>
+<h1>易书</h1>
+     <p>生如夏花之绚烂，死如秋叶之静美。</p>
+     <div class="subnav">
+        <ul class="nav nav-pills">
+            <li><a href="<?php echo URL::route('book'); ?>">在线阅读</a></li>
+            <li><a href="<?php echo URL::route('categories'); ?>">分类浏览</a></li>
+        </ul>
+    </div>
+    <div class="row-fluid">
+        <div class="span8 thumbnails">
+        <div class="bookshow_image">
+    
+    <img src="<?php echo asset('/'); ?><?php echo $book->path; ?><?php echo $book->cover; ?>" alt="<?php echo $book->cover; ?>" height="144" width="102"/>
+    </div>
+    <div class="bookshow_text">
+    <h5><?php echo $name; ?></h5> <p>创建时间：<?php echo $book->created_at; ?> &nbsp 作者：<?php echo $user->name; ?></p>
+    <p>简介：</br><?php echo $book->info; ?></p>
+      </div>
+      <hr/>
+      <h5>目录</h5>
+       <?php foreach($articles as $article): ?>
+       <p><a href="<?php echo URL::route('article', array('id'=>$article->id,'title'=>$article->title)); ?>"><?php echo $article->title; ?></a>。。。。。。。。。。。。。。<?php echo $article->page_num; ?></p>
+       <?php endforeach; ?>
+        </div>
+        
+        <div class="span4">
+        <?php echo $__env->make('layouts.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+      
+        </div>
+     </div>
+        
+        
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.head', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

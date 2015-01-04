@@ -1,0 +1,38 @@
+@extends('layouts.head')
+
+@section('content')
+<h1>易书</h1>
+     <p>生如夏花之绚烂，死如秋叶之静美。</p>
+     <div class="subnav">
+        <ul class="nav nav-pills">
+            <li><a href="{{URL::route('book')}}">在线阅读</a></li>
+            <li><a href="{{URL::route('categories')}}">分类浏览</a></li>
+        </ul>
+        
+    </div>
+ 
+    <div class="row-fluid">
+        <div class="span8">
+         <h4>关于我</h4>
+             <hr/>
+             <div style="margin-bottom:50px;">
+             <p>邮箱：foinachan@gmail.com</p>  
+             <p>爱好：舞蹈、写诗</p>
+             <p>星座：金牛座</p>
+             <p>状态：无丝竹之乱耳，无案牍之劳形。可以调素琴，阅金经。</p>
+              </div>
+             <h4>学习经历</h4>
+              <hr/>
+             <p>2010年进入某高校开始学习编程。在校期间在学习学校安排的课程的同时，自学了html、css、php，之后又学习了drupal、yii、laravel等。在这期间参与drupal社区文档的翻译，以及yii书籍翻译。大家都说编程是男娃子做的事，可是我这个小妮子写起代码来总是停不下来。可谓寤寐思服，辗转反侧，见代码如见真爱...</p> 
+        </div>
+        
+        <div class="span4">
+        @include('layouts.sidebar') 
+        </div>
+     </div>
+     <script src="{{ asset('static/scripts/jquery.js') }}"></script>
+      <script>
+      $(document).ready(function(){
+$('#myTab').find('li:eq(2)').addClass("active");});
+</script>
+@stop

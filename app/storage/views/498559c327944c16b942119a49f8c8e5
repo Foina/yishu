@@ -1,0 +1,17 @@
+
+    <h5><i class="icon-tags"></i>热门标签</h5>
+     <?php foreach ($tags as $key=>$tag): ?>
+    <a href="<?php echo URL::route('tags', array('id'=>$tag->id,'name'=>$tag->name)); ?>"><?php echo $tag->name; ?></a> &nbsp;
+     <?php endforeach; ?>      
+
+<hr/>
+
+    <h5>用户动态</h5>
+    <?php foreach($states as $state): ?>
+    <a href="#"><?php echo $state->user; ?><?php echo $state->event; ?></a><br>
+    <?php endforeach; ?>
+ <hr/>   
+     <h5>友情链接</h5>
+    
+    访问Foina的博客请转至：<a href="blog.wyishu.com">blog.wyishu.com</a><br>
+    
